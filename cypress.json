@@ -1,0 +1,7 @@
+{
+    "defaultCommandTimeOut0": 10000,
+    "env": {
+        "savepath":"/home/vk/Masaüstü/test/cypress/fixtures/bitexenCoinList.json"
+    }
+    
+}

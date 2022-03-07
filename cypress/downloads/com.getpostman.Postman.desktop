@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Postman
+Exec=/usr/bin/flatpak run --branch=stable --arch=x86_64 --command=Postman --file-forwarding com.getpostman.Postman @@u %U @@
+Terminal=false
+Type=Application
+Icon=com.getpostman.Postman
+Categories=Development;WebDevelopment;
+MimeType=x-scheme-handler/postman;
+StartupNotify=true
+StartupWMClass=postman
+X-Flatpak-Tags=proprietary;
+X-Flatpak=com.getpostman.Postman
