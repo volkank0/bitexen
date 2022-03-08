@@ -74,7 +74,12 @@ beforeEach(() => {
         cy.url().should("include", index)
     })
 
-    it("Coin Slider", () => {
+    it("Coin Slider List Control", () => {
+        cy.visit(index)
+      cy.CoinSelectorWrite()
+    })
+
+    it("Coin Slider Button Control", () => {
         cy.get('.jss726 > :nth-child(3) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root').scrollIntoView({ easing: 'linear' }).click()
             .wait(300)
         cy.get('.jss726 > :nth-child(1) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root').scrollIntoView({ easing: 'linear' }).click()
