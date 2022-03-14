@@ -9,11 +9,10 @@ beforeEach(() => {
 context("Bitexen", () => {
 
     const index = "https://www.bitexen.com/"
-    const BTXNCoin = "https://www.bitexen.com/btxn-coin-information"
-    const preSale = "https://www.bitexen.com/ieo"
-    const signIn = "https://www.bitexen.com/login"
-    const signUp = "https://www.bitexen.com/sign-up"
-    const competitions = "https://www.bitexen.com/competitions"
+    const BTXNCoin = index+"btxn-coin-information"
+    const preSale = index+"ieo"
+    const signIn = index+"login"
+    const signUp = index+"sign-up"
 
     it("Go Bitexen", () => {
         cy.visit(index)
@@ -43,7 +42,7 @@ context("Bitexen", () => {
     it("Sign In", () => {
         cy.get(".jss11").click()
         cy.url().should('include', signIn)
-        cy.get("#userName").type('volkan@test.com', { delay: 100 }).should('have.value', 'volkan@test.com')
+        cy.get("#userName").type('volkan@bitexen.com', { delay: 100 }).should('have.value', 'volkan@bitexen.com')
         cy.get("#password").type('bitexen').should('have.value', 'bitexen').wait(500)
         //cy.get('.jss504 > svg').click({ force: true })
         //  cy.get('.jss499 > .MuiButtonBase-root').click().wait(1000)
@@ -53,14 +52,14 @@ context("Bitexen", () => {
 
 
     it("Bitexen Register", () => {
-        cy.get('#bootstrap-input').type("volkan@mail.com").should("have.value", "volkan@mail.com")
+        cy.get('#bootstrap-input').type("volkan@bitexen.com").should("have.value", "volkan@bitexen.com")
             .scrollIntoView({ easing: 'linear' }).wait(2000)
         cy.get('.d-flex > .MuiButtonBase-root > .MuiButton-label').click().wait(1000)
         cy.url().should("include", signUp)
         cy.get('#firstName').type("VOLKAN", { delay: 100 }).should("have.value", "VOLKAN")
         cy.get('#lastName').type("KARAGÖL", { delay: 100 }).should("have.value", "KARAGÖL")
-        cy.get('#mail').focus().clear().type("volkan@test.com", { delay: 100 })
-        .should("have.value", "volkan@test.com")
+        cy.get('#mail').focus().clear().type("volkan@bitexen.com", { delay: 100 })
+        .should("have.value", "volkan@bitexen.com")
         cy.get('#password').type("Bitexen", { delay: 100 }).should("have.value", "Bitexen")
         cy.get(':nth-child(8) > .jss691 > .jss694').click()
         cy.get('#confirmPassword').type("Bitexen", { delay: 100 }).should("have.value", "Bitexen")
@@ -93,9 +92,5 @@ context("Bitexen", () => {
     it("Change Languge", () => {
         cy.get('.MuiFormGroup-root > :nth-child(2)').scrollIntoView({ easing: 'linear' }).wait(2000).click()
         cy.get('[style=" display: flex; align-items: center; margin-left: -12px;"]').scrollIntoView({ easing: 'linear' }).wait(2000)
-    })
-    it("Career", () => {
-        cy.visit("https://jobs.bitexen.com/").wait(1000)
-        cy.get(':nth-child(5) > .style_link__1gKt1').click()
     })
 })
