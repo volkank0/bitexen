@@ -4,9 +4,9 @@ import path from "../../pageObjectModel/path"
 const pathControl = new path()
 beforeEach(() => {
     cy.viewport(1920, 1080)
-  
-  })
-  context("Bitexen", () => {
+
+})
+context("Bitexen", () => {
 
     const index = "https://www.bitexen.com/"
     const BTXNCoin = "https://www.bitexen.com/btxn-coin-information"
@@ -54,19 +54,22 @@ beforeEach(() => {
 
     it("Bitexen Register", () => {
         cy.get('#bootstrap-input').type("volkan@mail.com").should("have.value", "volkan@mail.com")
-        .scrollIntoView({ easing: 'linear' }).wait(2000)
+            .scrollIntoView({ easing: 'linear' }).wait(2000)
         cy.get('.d-flex > .MuiButtonBase-root > .MuiButton-label').click().wait(1000)
         cy.url().should("include", signUp)
         cy.get('#firstName').type("VOLKAN", { delay: 100 }).should("have.value", "VOLKAN")
         cy.get('#lastName').type("KARAGÖL", { delay: 100 }).should("have.value", "KARAGÖL")
-        cy.get('#mail').type("volkan@test.com", { delay: 100 }).should("have.value", "volkan@test.com")
+        cy.get('#mail').focus().clear().type("volkan@test.com", { delay: 100 })
+        .should("have.value", "volkan@test.com")
         cy.get('#password').type("Bitexen", { delay: 100 }).should("have.value", "Bitexen")
         cy.get(':nth-child(8) > .jss691 > .jss694').click()
         cy.get('#confirmPassword').type("Bitexen", { delay: 100 }).should("have.value", "Bitexen")
+        cy.get('#referrerCode').type("VLKNKRGL", { delay: 100 }).should("have.value", "VLKNKRGL")
         cy.get(':nth-child(1) > .jss700 > .jss701 > svg').click()
         cy.get(':nth-child(2) > .jss700 > .jss701 > svg').click()
         cy.get(':nth-child(3) > .jss700 > .jss701 > svg').click()
         cy.get(':nth-child(4) > .jss700 > .jss701 > svg').click()
+        
             .wait(1000)
         //cy.get('.jss675 > .MuiButtonBase-root').click({ force: true }).wait(1000)
         //  cy.get('.jss643').should("have.value","Kaydınızı tamamlayabilmeniz için size göndermiş olduğumuz e-postada yer alan linke tıklayarak onay vermeniz gerekmektedir.")
@@ -76,13 +79,15 @@ beforeEach(() => {
 
     it("Coin Slider List Control", () => {
         cy.visit(index)
-      cy.CoinSelectorWrite()
+        cy.CoinSelectorWrite()
     })
 
     it("Coin Slider Button Control", () => {
-        cy.get('.jss726 > :nth-child(3) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root').scrollIntoView({ easing: 'linear' }).click()
+        cy.get('.jss192 > :nth-child(3) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root > path')
+        .scrollIntoView({ easing: 'linear' }).click({force: true})
             .wait(300)
-        cy.get('.jss726 > :nth-child(1) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root').scrollIntoView({ easing: 'linear' }).click()
+        cy.get('.jss192 > :nth-child(1) > .MuiButtonBase-root > .MuiIconButton-label > .MuiSvgIcon-root > path').scrollIntoView({ easing: 'linear' })
+        .click({force: true})
             .wait(300)
     })
     it("Change Languge", () => {
